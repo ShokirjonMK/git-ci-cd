@@ -1,0 +1,14 @@
+name: CI-CD by MK
+
+
+on: 
+  push:
+    branches:
+      -main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: test
+      
