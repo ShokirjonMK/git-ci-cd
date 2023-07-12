@@ -1,14 +1,25 @@
-name: CI-CD by MK
-
-
-on: 
-  push:
-    branches:
-      -main
+name: CI-CD by MK 
       
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+
 jobs:
   build:
+
     runs-on: ubuntu-latest
+
     steps:
-      - run: test
-      
+    - uses: actions/checkout@v3
+
+    - name: migrate
+      run: php yii migrate
+
+    - name: rbac
+    - run: php yii db/rbac
